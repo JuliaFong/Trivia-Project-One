@@ -285,11 +285,10 @@ const questions = [
 
 
 
-const random = Math.floor(Math.random() * questions.length)
-questionDiv.text(questions[random].question)
 
 
-setUpRound()
+
+
 const $rounds = $('#rounds');
 $rounds.text('round: ${this.round}');
 if (this.round === 1) {
@@ -308,7 +307,9 @@ if (this.round === 1) {
     this.question(25);
     this.time = 30;
 }
-const rounds = setUpRound(() => {
+const setUpRound = () => {
+    const random = Math.floor(Math.random() * questions.length)
+    questionDiv.text(questions[random].question)
     if (this.round === 0) {
         setTimer(function() {
                 const $timer = $('#timer');
@@ -328,6 +329,18 @@ const rounds = setUpRound(() => {
 
 
     for (let i = 0; i < questions[random].answer.length; i++) {
-        answersUl.append(`<input type="checkbox">${questions[random].answer[i]}</input>`)
+        answersUl.append(`<button>${questions[random].answer[i]}</button>`)
     }
-});
+
+    $('button').on('click', (e) => {
+        if ($(e.target).text().trimStart() === questions[random].answers) {
+            alert('you got it right!!')
+        } else {
+            alert('WRONG!!')
+        }
+        answersUl.text('')
+        setUpRound()
+    })
+};
+
+setUpRound()
