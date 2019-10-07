@@ -8,6 +8,7 @@ const playerOne = {
     age: 0,
     score: 0,
     overallScore: 0,
+
 }
 
 
@@ -324,6 +325,7 @@ const setUpRound = () => {
                 })
             },
             3000)
+
     };
 
 
@@ -331,13 +333,17 @@ const setUpRound = () => {
     for (let i = 0; i < questions[random].answer.length; i++) {
         answersUl.append(`<button>${questions[random].answer[i]}</button>`)
     }
-
     $('button').on('click', (e) => {
+
         if ($(e.target).text().trimStart() === questions[random].answers) {
             alert('you got it right!!')
+            playerOne.score += 1
         } else {
             alert('WRONG!!')
+            playerOne.score -= 1
         }
+        console.log(playerOne.score)
+
         answersUl.text('')
         setUpRound()
     })
