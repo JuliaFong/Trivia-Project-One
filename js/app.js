@@ -310,19 +310,19 @@ if (this.round === 1) {
 }
 const rounds = setUpRound(() => {
     if (this.round === 0) {
-        setTimer() {
-            const $timer = $('#timer');
-            const interval = setInterval(() => {
-                if (this.time === 0) {
-                    clearInterval(interval);
-                    this.round++
-                } else {
-                    this.time--
-                }
-                $timer.text(`timer: {this.time}`)
-
-            }, 3000)
-        }
+        setTimer(function() {
+                const $timer = $('#timer');
+                const interval = setInterval(() => {
+                    if (this.time === 0) {
+                        clearInterval(interval);
+                        this.round++
+                    } else {
+                        this.time--
+                    }
+                    $timer.text(`timer: {this.time}`)
+                })
+            },
+            3000)
     };
 
 
@@ -330,5 +330,4 @@ const rounds = setUpRound(() => {
     for (let i = 0; i < questions[random].answer.length; i++) {
         answersUl.append(`<input type="checkbox">${questions[random].answer[i]}</input>`)
     }
-}
 });
