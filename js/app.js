@@ -20,7 +20,6 @@ const game = {
                 ' Sir Andrew Lloyd Webber',
                 ' Rogers & Hammerstien',
                 ' Bob Fosse'
-
             ],
             answer: 'Sir Andrew Lloyd Webber',
             type: 'multiple choice',
@@ -305,7 +304,29 @@ const game = {
             difficulty: 4
 
         }
-    ]
+    ],
+    startGame() {
+        while (this.rounds <= 5) {
+
+        }
+    },
+    chooseQuestion() {
+        console.log('This is chooseQuestion()!')
+        while (this.answers <= 5) {},
+    }
+    checkQuestion() {
+        console.log('This is checkQuestion()!')
+    },
+    //Set up round goes here
+    getUserAnswer() {
+        console.log('This is getUserAnswer()!')
+    },
+    checkAnswer() {
+        console.log('This is checkAnswer()!')
+        this.round++
+            $('#score').text(`overallScore: ${this.score}`);
+    },
+
 }
 
 
@@ -314,8 +335,10 @@ const game = {
 
 
 const setUpRound = () => {
-    const random = Math.floor(Math.random() * questions.length)
-    questionDiv.text(questions[random].question)
+    const random = Math.floor(Math.random() * game.questions.length)
+    const selectedQuestion = game.questions.splice(random, 1)[0]
+    console.log(selectedQuestion)
+    questionDiv.text(selectedQuestion.question)
     if (this.round === 0) {
         setTimer(function() {
                 const $timer = $('#timer');
@@ -335,12 +358,11 @@ const setUpRound = () => {
 
 
 
-    for (let i = 0; i < questions[random].answers.length; i++) {
-        answerUl.append(`<button>${questions[random].answers[i]}</button>`)
+    for (let i = 0; i < selectedQuestion.answers.length; i++) {
+        answerUl.append(`<button>${selectedQuestion.answers[i]}</button>`)
     }
     $('button').on('click', (e) => {
-
-        if ($(e.target).text().trimStart() === questions[random].answer) {
+        if ($(e.target).text().trimStart() === selectedQuestion.answer) {
             alert('you got it right!!')
             playerOne.score += 1
         } else {
@@ -353,7 +375,5 @@ const setUpRound = () => {
     })
 };
 
-function setUpRound() {
-    questions.push()
 
-}
+setUpRound()
