@@ -10,77 +10,46 @@ const playerOne = {
     overallScore: 0,
 }
 
+const missedQuestions = []
+
 const game = {
-    round: 0,
+    round: 1,
     questions: [
-        //picture of cats the musical
+
         {
-            question: 'Who composed the musical pictured above?',
-            answers: ['Andrew Lloyd Webber',
-                ' Sir Andrew Lloyd Webber',
-                ' Rogers & Hammerstien',
-                ' Bob Fosse'
+            question: 'Who originated the role of Galinda the Good Witch from the Musical Wicked?',
+            answers: ['Julie Andrews',
+                'Ariana Grande',
+                'Kristin Chenowith',
+                'Sarah Jessica Parker'
             ],
-            answer: 'Sir Andrew Lloyd Webber',
+            answer: 'Kristin Chenowith',
             type: 'multiple choice',
             difficulty: 1
         },
         {
-            question: ' What is considered the first musical?',
-            answers: ['Black Crook',
-                ' Showboat',
-                ' Oklahoma',
-                ' South Pacific'
+            //img of the last 5 years
+            question: 'Which composer wrote an entire musical based off of his marriage and divorce? ',
+            answers: [' Jason Robert Brown',
+                'Bob Dylan',
+                'Stephen Sondheim',
+                'Sir Andrew Lloyd Weber'
+
             ],
-            answer: 'Black Crook',
-            type: 'multiple choice',
-            difficulty: 5
+            answer: 'Jason Robert Brown',
+            type: 'image',
+            difficulty: 1
         },
         {
-            question: 'What is considered the first book musical?',
-            answers: ['Ragtime',
-                ' Showboat',
-                ' Oklahoma!',
-                ' Sound of Music'
+            question: 'What Disney movie has NOT been adapted as a Broadway Musical?',
+            answers: [' Beauty and the Beast',
+                'Tarzan',
+                'Mulan',
+                'The little mermaid'
             ],
-            answer: 'Showboat',
+            answer: 'Mulan',
             type: 'multiple choice',
-            difficulty: 4
-        },
-
-        {
-            question: ' What was the first musical to be made into a movie?',
-            answers: ['My Fair Lady',
-                'Sound of Music',
-                'The Jazz Singer',
-                'Grease'
-            ],
-            answer: 'The Jazz Singer',
-            type: 'multiple choice',
-            difficulty: 3
-        },
-
-        { //Singing in the rain good morning video
-            question: ' Who starred and co-choreographed the musical "Singing in the Rain"?',
-            answers: ['Donald OConnor',
-                'Debbie Reynolds',
-                'Stanley Donen',
-                'Gene Kelly'
-            ],
-            answer: 'Gene Kelly',
-            type: 'multiple choice',
-            difficulty: 2
-        },
-        { // section two
-            question: 'What family is the musical "Grey Gardens," based on?',
-            answers: ['The Kardashians',
-                ' The Kennedys',
-                ' The Jackson 5',
-                ' The Obamas'
-            ],
-            answer: 'The Kennedys',
-            type: 'multiple choice',
-            difficulty: 3
+            difficulty: 1
         },
         {
             //video of chicago
@@ -92,8 +61,31 @@ const game = {
 
             ],
             answer: 'Bob Fosse',
-            type: 'multiple choice',
+            type: 'video',
             difficulty: 1
+        },
+        //picture of cats the musical
+        {
+            question: 'Who composed the musical pictured above?',
+            answers: ['Andrew Lloyd Webber',
+                ' Sir Andrew Lloyd Webber',
+                ' Rogers & Hammerstien',
+                ' Bob Fosse'
+            ],
+            answer: 'Sir Andrew Lloyd Webber',
+            type: 'image',
+            difficulty: 1
+        },
+        { //Singing in the rain good morning video
+            question: ' Who starred and co-choreographed the musical "Singing in the Rain"?',
+            answers: ['Donald OConnor',
+                'Debbie Reynolds',
+                'Stanley Donen',
+                'Gene Kelly'
+            ],
+            answer: 'Gene Kelly',
+            type: 'video',
+            difficulty: 2
         },
         {
             question: ' Which one did Stephen Sondheim NOT compose?',
@@ -108,28 +100,6 @@ const game = {
 
         },
         {
-            question: 'Who won the first EGOT?',
-            answers: ['Richard Rogers',
-                ' Cole Porter',
-                ' Audrey Hepburn',
-                ' Irving Berlin'
-            ],
-            answer: 'Richard Rogers',
-            type: 'multiple choice',
-            difficulty: 4
-        },
-        {
-            question: 'Who is the first woman to win an EGOT?',
-            answers: ['Helen Hayes',
-                ' Audrey Hepburn',
-                ' Whoopi Goldbery',
-                ' Rita Moreno'
-            ],
-            answer: 'Helen Hayes',
-            type: 'multiple choice',
-            difficulty: 5,
-        },
-        {
             //round three
             question: 'Who originally sang the song "Will he like me?" from the 1994 musical, "She loves me"',
             answers: ['Barbara Streisand',
@@ -141,76 +111,16 @@ const game = {
             type: 'multiple choice',
             difficulty: 2
         },
-        { //video of ariana grande singing in 13
-            question: 'which pop star got her start singing on broadway?',
-            answers: ['Lady Gaga',
-                ' Ariana Grande',
-                ' Katy Perry',
-                ' Sarah Jessica Parker'
-            ],
-            answer: 'Ariana Grande',
-            type: 'multiple choice',
-            difficulty: 4
-        },
         {
-            question: 'Who did Sir Andrew Lloyd Webber write "Phantom of the Opera for?"',
-            answers: ['Julie Andrews',
-                'Sarah Brightman',
-                'Bernadette Peters',
-                'Audra McDonald'
+            question: 'Who originated the role of Eva Peron in the musical Evita?',
+            answers: ['Audra McDonald',
+                'Julie Andrews',
+                'Patti LuPone',
+                'Barbara Cook'
             ],
-            answer: 'Sarah Brightman',
+            answer: 'Pattie LuPone',
             type: 'multiple choice',
-            difficulty: 3
-        },
-        {
-            question: 'What Disney movie has NOT been adapted as a Broadway Musical?',
-            answers: [' Beauty and the Beast',
-                'Tarzan',
-                'Mulan',
-                'The little mermaid'
-            ],
-            answer: 'Mulan',
-            type: 'multiple choice',
-            difficulty: 1
-        },
-        {
-            //img of sheet music
-            question: 'Who wrote this song, and what musical is this from?',
-            answers: [' Lorenz Hart, Cinderella',
-                'Cole Porter, Anastasia',
-                'Richard Rogers, Cinderella',
-                'Irving Berlin, Anastasia',
-            ],
-            answer: 'Richard Rogers, Cinderella',
-            type: 'multiple choice',
-            difficulty: 5
-        },
-        //round four
-        {
-            //img of the last 5 years
-            question: 'Which composer wrote an entire musical based off of his marriage and divorce? ',
-            answers: [' Jason Robert Brown',
-                'Bob Dylan',
-                'Stephen Sondheim',
-                'Sir Andrew Lloyd Weber'
-
-            ],
-            answer: 'Jason Robert Brown',
-            type: 'multiple choice',
-            difficulty: 1
-        },
-        { //the fantastick sheet music
-            question: ' what musical is this song from?',
-            answers: [' Sound of Music',
-                'Cinderella',
-                'The fantasticks',
-                'Beauty and the Beast'
-
-            ],
-            answer: 'The Fantasticks',
-            type: 'multiple choice',
-            difficulty: 5
+            difficulty: 2
         },
         {
             question: 'finish this lyric from the musical Thouroughly modern millie,I dont careif hes a nobody',
@@ -225,49 +135,35 @@ const game = {
 
         },
         {
-            question: 'Finish this lyric from Wicked, the musical, Was I really seeking good, Or just seeking attention ?',
-            answers: ['All right, enough So be it, so be it then',
-                'All helpful urges should be circumvented',
-                'Sure, I meant well. Well, look at what well-meant did',
-                'Is that all good deeds are When looked at with an ice-cold eye?'
-            ],
-            answer: 'Is that all good deeds are When looked at with an ice-cold eye?',
-            type: 'multiple choice',
-            difficulty: 4
-        },
-        {
-            question: 'Who originated the role of Eva Peron in the musical Evita?',
-            answers: ['Audra McDonald',
-                'Julie Andrews',
-                'Patti LuPone',
-                'Barbara Cook'
-            ],
-            answer: 'Pattie LuPone',
-            type: 'multiple choice',
-            difficulty: 2
-        },
-        // round 5.. finale!!
-        {
-            question: 'Who originated the role of Galinda the Good Witch from the Musical Wicked?',
+            question: 'Who did Sir Andrew Lloyd Webber write "Phantom of the Opera for?"',
             answers: ['Julie Andrews',
-                'Ariana Grande',
-                'Kristin Chenowith',
-                'Sarah Jessica Parker'
+                'Sarah Brightman',
+                'Bernadette Peters',
+                'Audra McDonald'
             ],
-            answer: 'Kristin Chenowith',
+            answer: 'Sarah Brightman',
             type: 'multiple choice',
-            difficulty: 1
-
-        }, { //img of sheet music "In the heights and video of song"
-            question: 'Who wrote, composed, and starred in this musical?',
-            answers: [' Lin Manuel Miranda, In the Heights',
-                'Stephen Sodheim, Into the Woods',
-                'Lin Manuel Miranda, Hamilton',
-                'Stephen Sondheim, Sweeney Todd'
+            difficulty: 3
+        }, {
+            question: 'What family is the musical "Grey Gardens," based on?',
+            answers: ['The Kardashians',
+                ' The Kennedys',
+                ' The Jackson 5',
+                ' The Obamas'
             ],
-            answer: 'Lin Manuel Miranda, In the Heights',
+            answer: 'The Kennedys',
             type: 'multiple choice',
-            difficulty: 2
+            difficulty: 3
+        }, {
+            question: ' What was the first musical to be made into a movie?',
+            answers: ['My Fair Lady',
+                'Sound of Music',
+                'The Jazz Singer',
+                'Grease'
+            ],
+            answer: 'The Jazz Singer',
+            type: 'multiple choice',
+            difficulty: 3
         },
         {
             question: 'What musical is this from, Deep in December its nice to remember,The fire of September that made us mellow.?',
@@ -282,15 +178,48 @@ const game = {
 
         },
         {
-            question: 'What actress starred in the musical Annie in 1979 and made her broadway debut?',
-            answers: ['Lucy Lui',
-                'Sarah Jessica Parker',
-                'Cynthia Nixon',
-                'Kristin Davis'
+            question: 'What is considered the first book musical?',
+            answers: ['Ragtime',
+                ' Showboat',
+                ' Oklahoma!',
+                ' Sound of Music'
             ],
-            answer: 'Sarah Jessica Parker',
+            answer: 'Showboat',
             type: 'multiple choice',
-            difficulty: 5
+            difficulty: 4
+        },
+
+        {
+            question: 'Who won the first EGOT?',
+            answers: ['Richard Rogers',
+                ' Cole Porter',
+                ' Audrey Hepburn',
+                ' Irving Berlin'
+            ],
+            answer: 'Richard Rogers',
+            type: 'multiple choice',
+            difficulty: 4
+        }, {
+            question: 'Finish this lyric from Wicked, the musical, Was I really seeking good, Or just seeking attention ?',
+            answers: ['All right, enough So be it, so be it then',
+                'All helpful urges should be circumvented',
+                'Sure, I meant well. Well, look at what well-meant did',
+                'Is that all good deeds are When looked at with an ice-cold eye?'
+            ],
+            answer: 'Is that all good deeds are When looked at with an ice-cold eye?',
+            type: 'multiple choice',
+            difficulty: 4
+        },
+        { //video of ariana grande singing in 13
+            question: 'which pop star got her start singing on broadway?',
+            answers: ['Lady Gaga',
+                ' Ariana Grande',
+                ' Katy Perry',
+                ' Sarah Jessica Parker'
+            ],
+            answer: 'Ariana Grande',
+            type: 'video',
+            difficulty: 4
         },
         {
             question: 'What is the longest running Broadway show?',
@@ -303,7 +232,67 @@ const game = {
             type: 'multiple choice',
             difficulty: 4
 
-        }
+        },
+
+        {
+            question: ' What is considered the first musical?',
+            answers: ['Black Crook',
+                ' Showboat',
+                ' Oklahoma',
+                ' South Pacific'
+            ],
+            answer: 'Black Crook',
+            type: 'multiple choice',
+            difficulty: 5
+        },
+
+        {
+            question: 'Who is the first woman to win an EGOT?',
+            answers: ['Helen Hayes',
+                ' Audrey Hepburn',
+                ' Whoopi Goldbery',
+                ' Rita Moreno'
+            ],
+            answer: 'Helen Hayes',
+            type: 'multiple choice',
+            difficulty: 5,
+        },
+        {
+            //img of sheet music
+            question: 'Who wrote this song, and what musical is this from?',
+            answers: [' Lorenz Hart, Cinderella',
+                'Cole Porter, Anastasia',
+                'Richard Rogers, Cinderella',
+                'Irving Berlin, Anastasia',
+            ],
+            answer: 'Richard Rogers, Cinderella',
+            type: 'image',
+            difficulty: 5
+        },
+        { //the fantastick sheet music
+            question: ' what musical is this song from?',
+            answers: [' Sound of Music',
+                'Cinderella',
+                'The fantasticks',
+                'Beauty and the Beast'
+
+            ],
+            answer: 'The Fantasticks',
+            type: 'image',
+            difficulty: 5
+        },
+        { //video
+            question: 'What actress starred in the musical Annie in 1979 and made her broadway debut?',
+            answers: ['Lucy Lui',
+                'Sarah Jessica Parker',
+                'Cynthia Nixon',
+                'Kristin Davis'
+            ],
+            answer: 'Sarah Jessica Parker',
+            type: 'video',
+            difficulty: 5
+        },
+
     ],
     startGame() {
         while (this.rounds <= 5) {
@@ -311,32 +300,49 @@ const game = {
         }
     },
     chooseQuestion() {
+        // should organize questions by difficulty [check game.round] and then grab a random one
         console.log('This is chooseQuestion()!')
-        while (this.answers <= 5) {},
-    }
+
+        if (game.round == 1 && game.difficulty == 1) {
+
+        }
+        if (game.round == 2 && game.difficulty == 2) {
+
+        }
+        if (game.round == 3 && game.difficulty == 3) {
+
+        }
+        if (game.round == 4 && game.difficulty == 4) {
+
+        }
+        if (game.round == 5 && game.difficulty == 5) {
+
+        }
+    },
     checkQuestion() {
+        // check what kind of question it is [multiple choice, image whatever] and set timer
         console.log('This is checkQuestion()!')
+            // if (game.question == multipleChoice)
     },
     //Set up round goes here
     getUserAnswer() {
+        // get the user answer from the DOM
         console.log('This is getUserAnswer()!')
     },
     checkAnswer() {
+        // compare user answer to question object answer and either start round over or end game if over
         console.log('This is checkAnswer()!')
         this.round++
-            $('#score').text(`overallScore: ${this.score}`);
-    },
+            //$('#score').text(`overallScore: ${this.score}`);
+    }
 
 }
 
 
-
-
-
-
 const setUpRound = () => {
-    const random = Math.floor(Math.random() * game.questions.length)
-    const selectedQuestion = game.questions.splice(random, 1)[0]
+    const roundQuestions = game.questions.filter(q => q.difficulty === game.round)
+    const random = Math.floor(Math.random() * roundQuestions.length)
+    const selectedQuestion = roundQuestions.splice(random, 1)[0]
     console.log(selectedQuestion)
     questionDiv.text(selectedQuestion.question)
     if (this.round === 0) {
@@ -349,11 +355,11 @@ const setUpRound = () => {
                     } else {
                         this.time--
                     }
-                    $timer.text(`timer: {this.time}`)
+                    $timer.text(`timer: ${this.time}`)
+                    alert('uh oh! Running out of time!!!');
                 })
             },
             3000)
-
     };
 
 
@@ -361,6 +367,7 @@ const setUpRound = () => {
     for (let i = 0; i < selectedQuestion.answers.length; i++) {
         answerUl.append(`<button>${selectedQuestion.answers[i]}</button>`)
     }
+
     $('button').on('click', (e) => {
         if ($(e.target).text().trimStart() === selectedQuestion.answer) {
             alert('you got it right!!')
@@ -375,5 +382,5 @@ const setUpRound = () => {
     })
 };
 
-
 setUpRound()
+game.chooseQuestion()
