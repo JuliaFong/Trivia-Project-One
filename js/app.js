@@ -25,7 +25,9 @@ const game = {
             ],
             answer: 'Kristin Chenowith',
             type: 'multiple choice',
-            difficulty: 1
+            difficulty: 1,
+            media: 'null'
+
         },
         {
             //img of the last 5 years
@@ -38,7 +40,9 @@ const game = {
             ],
             answer: 'Jason Robert Brown',
             type: 'image',
-            difficulty: 1
+            difficulty: 1,
+            media: './static/img1.jpg'
+
         },
         {
             question: 'What Disney movie has NOT been adapted as a Broadway Musical?',
@@ -49,7 +53,8 @@ const game = {
             ],
             answer: 'Mulan',
             type: 'multiple choice',
-            difficulty: 1
+            difficulty: 1,
+            media: 'null'
         },
         {
             //video of chicago
@@ -63,6 +68,7 @@ const game = {
             answer: 'Bob Fosse',
             type: 'video',
             difficulty: 1
+            media: './static/'
         },
         //picture of cats the musical
         {
@@ -96,7 +102,8 @@ const game = {
             ],
             answer: 'Little Shop of Horrors',
             type: 'multiple choice',
-            difficulty: 2
+            difficulty: 2,
+            media: 'null'
 
         },
         {
@@ -109,7 +116,8 @@ const game = {
             ],
             answer: 'Barbara Cook',
             type: 'multiple choice',
-            difficulty: 2
+            difficulty: 2,
+            media: 'null'
         },
         {
             question: 'Who originated the role of Eva Peron in the musical Evita?',
@@ -120,7 +128,8 @@ const game = {
             ],
             answer: 'Pattie LuPone',
             type: 'multiple choice',
-            difficulty: 2
+            difficulty: 2,
+            media: 'null'
         },
         {
             question: 'finish this lyric from the musical Thouroughly modern millie,I dont careif hes a nobody',
@@ -131,7 +140,8 @@ const game = {
             ],
             answer: 'In my heart hell be a somebody ',
             type: 'multiple choice',
-            difficulty: 3
+            difficulty: 3,
+            media: 'null'
 
         },
         {
@@ -143,8 +153,10 @@ const game = {
             ],
             answer: 'Sarah Brightman',
             type: 'multiple choice',
-            difficulty: 3
-        }, {
+            difficulty: 3,
+            media: 'null'
+        },
+        {
             question: 'What family is the musical "Grey Gardens," based on?',
             answers: ['The Kardashians',
                 ' The Kennedys',
@@ -153,7 +165,8 @@ const game = {
             ],
             answer: 'The Kennedys',
             type: 'multiple choice',
-            difficulty: 3
+            difficulty: 3,
+            media: 'null'
         }, {
             question: ' What was the first musical to be made into a movie?',
             answers: ['My Fair Lady',
@@ -163,7 +176,8 @@ const game = {
             ],
             answer: 'The Jazz Singer',
             type: 'multiple choice',
-            difficulty: 3
+            difficulty: 3,
+            media: 'null'
         },
         {
             question: 'What musical is this from, Deep in December its nice to remember,The fire of September that made us mellow.?',
@@ -174,7 +188,8 @@ const game = {
             ],
             answer: 'The Fantasticks',
             type: 'multiple choice',
-            difficulty: 3
+            difficulty: 3,
+            media: 'null'
 
         },
         {
@@ -186,7 +201,8 @@ const game = {
             ],
             answer: 'Showboat',
             type: 'multiple choice',
-            difficulty: 4
+            difficulty: 4,
+            media: 'null'
         },
 
         {
@@ -198,8 +214,11 @@ const game = {
             ],
             answer: 'Richard Rogers',
             type: 'multiple choice',
-            difficulty: 4
-        }, {
+            difficulty: 4,
+            media: 'null'
+
+        },
+        {
             question: 'Finish this lyric from Wicked, the musical, Was I really seeking good, Or just seeking attention ?',
             answers: ['All right, enough So be it, so be it then',
                 'All helpful urges should be circumvented',
@@ -208,7 +227,8 @@ const game = {
             ],
             answer: 'Is that all good deeds are When looked at with an ice-cold eye?',
             type: 'multiple choice',
-            difficulty: 4
+            difficulty: 4,
+            media: 'null'
         },
         { //video of ariana grande singing in 13
             question: 'which pop star got her start singing on broadway?',
@@ -220,6 +240,7 @@ const game = {
             answer: 'Ariana Grande',
             type: 'video',
             difficulty: 4
+            media:
         },
         {
             question: 'What is the longest running Broadway show?',
@@ -230,7 +251,8 @@ const game = {
             ],
             answer: 'Phantom of the Opera',
             type: 'multiple choice',
-            difficulty: 4
+            difficulty: 4,
+            media: 'null'
 
         },
 
@@ -243,7 +265,8 @@ const game = {
             ],
             answer: 'Black Crook',
             type: 'multiple choice',
-            difficulty: 5
+            difficulty: 5,
+            media: 'null'
         },
 
         {
@@ -256,6 +279,7 @@ const game = {
             answer: 'Helen Hayes',
             type: 'multiple choice',
             difficulty: 5,
+            media: 'null'
         },
         {
             //img of sheet music
@@ -268,6 +292,7 @@ const game = {
             answer: 'Richard Rogers, Cinderella',
             type: 'image',
             difficulty: 5
+            media: './static'
         },
         { //the fantastick sheet music
             question: ' what musical is this song from?',
@@ -280,6 +305,7 @@ const game = {
             answer: 'The Fantasticks',
             type: 'image',
             difficulty: 5
+            media:
         },
         { //video
             question: 'What actress starred in the musical Annie in 1979 and made her broadway debut?',
@@ -290,7 +316,9 @@ const game = {
             ],
             answer: 'Sarah Jessica Parker',
             type: 'video',
-            difficulty: 5
+            difficulty: 5,
+            media:
+
         },
 
     ],
@@ -322,7 +350,7 @@ const game = {
     checkQuestion() {
         // check what kind of question it is [multiple choice, image whatever] and set timer
         console.log('This is checkQuestion()!')
-            //if (game.question == multipleChoice)
+        if (game.question == multipleChoice == image == video) { this.checkQuestion }
     },
     //Set up round goes here
     getUserAnswer() {
