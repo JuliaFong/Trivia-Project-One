@@ -14,6 +14,7 @@ const missedQuestions = []
 const game = {
     round: 1,
     time: 30,
+    correctAnswer: 0,
     questions: [
 
         {
@@ -21,7 +22,7 @@ const game = {
             answers: ['Julie Andrews',
                 'Ariana Grande',
                 'Kristin Chenowith',
-                'Sarah Jessica Parker'
+                'Sarah Jessica Parker',
             ],
             answer: 'Kristin Chenowith',
             type: 'multiple choice',
@@ -41,7 +42,7 @@ const game = {
             answer: 'Jason Robert Brown',
             type: 'image',
             difficulty: 1,
-            media: './static/img1.jpg'
+            media: './static/img/last5years.png'
 
         },
         {
@@ -67,8 +68,8 @@ const game = {
             ],
             answer: 'Bob Fosse',
             type: 'video',
-            difficulty: 1
-            media: './static/'
+            difficulty: 1,
+            media: './static/allthatjazz.mp4'
         },
         //picture of cats the musical
         {
@@ -80,7 +81,8 @@ const game = {
             ],
             answer: 'Sir Andrew Lloyd Webber',
             type: 'image',
-            difficulty: 1
+            difficulty: 1,
+            media: './static/img/1.jpg'
         },
         { //Singing in the rain good morning video
             question: ' Who starred and co-choreographed the musical "Singing in the Rain"?',
@@ -91,7 +93,8 @@ const game = {
             ],
             answer: 'Gene Kelly',
             type: 'video',
-            difficulty: 2
+            difficulty: 2,
+            media: './static/goodmorning.mp4'
         },
         {
             question: ' Which one did Stephen Sondheim NOT compose?',
@@ -239,8 +242,8 @@ const game = {
             ],
             answer: 'Ariana Grande',
             type: 'video',
-            difficulty: 4
-            media:
+            difficulty: 4,
+            media: './static/img/13opportunity.mp4'
         },
         {
             question: 'What is the longest running Broadway show?',
@@ -291,8 +294,8 @@ const game = {
             ],
             answer: 'Richard Rogers, Cinderella',
             type: 'image',
-            difficulty: 5
-            media: './static'
+            difficulty: 5,
+            media: './static/img/2.png'
         },
         { //the fantastick sheet music
             question: ' what musical is this song from?',
@@ -304,8 +307,8 @@ const game = {
             ],
             answer: 'The Fantasticks',
             type: 'image',
-            difficulty: 5
-            media:
+            difficulty: 5,
+            media: './static/img/1.png'
         },
         { //video
             question: 'What actress starred in the musical Annie in 1979 and made her broadway debut?',
@@ -317,7 +320,7 @@ const game = {
             answer: 'Sarah Jessica Parker',
             type: 'video',
             difficulty: 5,
-            media:
+            media: './static/img/annie.mp4'
 
         },
 
@@ -347,12 +350,24 @@ const game = {
 
         }
     },
+    // ifPassed() {
+    //     if (game.answer > 3) {
+    //         return true
+    //         alert('yay right answer');
+    //     } else {
+    //         return false
+    //         alert('Ope start again!');
+    //     }
+
+
     checkQuestion() {
         // check what kind of question it is [multiple choice, image whatever] and set timer
         console.log('This is checkQuestion()!')
-        if (game.question == multipleChoice == image == video) { this.checkQuestion }
+            // if (game.question == multipleChoice == image == video) {
+            //     this.checkQuestion
+            // }
     },
-    //Set up round goes here
+    // Set up round goes here
     getUserAnswer() {
         // get the user answer from the DOM
         console.log('This is getUserAnswer()!')
@@ -366,13 +381,41 @@ const game = {
 
 }
 
+const setQuestions = () => game.questions.filter(q => q.difficulty === game.round)
+
+let roundQuestions = setQuestions()
+
 function setUpRound() {
-    const roundQuestions = game.questions.filter(q => q.difficulty === game.round)
+    let interval;
+    if (roundQuestions.length === 0) {
+        game.round++
+            roundQuestions = setQuestions()
+        $('#round').text(`Round ${game.round}`)
+    }
+
     const random = Math.floor(Math.random() * roundQuestions.length)
     const selectedQuestion = roundQuestions.splice(random, 1)[0]
-    console.log(selectedQuestion);
     questionDiv.text(selectedQuestion.question);
-    answerUl.text('')
+    if (selectedQuestion.type === 'video') {
+        const img = document.querySelector('.image-question')
+        const vid = document.getElementById('video-question')
+        img.style.visibility = "hidden"
+        vid.style.visibility = 'visible'
+        vid.src = selectedQuestion.media
+        vid.autoplay = true;
+        vid.load();
+    } else if (selectedQuestion.type === 'image') {
+        const img = document.querySelector('.image-question')
+        img.style.visibility = 'visible'
+        img.src = selectedQuestion.media
+
+    } else {
+        const img = document.querySelector('.image-question')
+        const vid = document.getElementById('video-question')
+        img.style.visibility = "hidden"
+        vid.style.visibility = 'hidden'
+    }
+    answerUl.empty();
     for (let i = 0; i < selectedQuestion.answers.length; i++) {
         if (selectedQuestion.answers[i] === selectedQuestion.answer) {
             // right answer
@@ -386,8 +429,11 @@ function setUpRound() {
     $('#correct-answer').on('click', (e) => {
         if ($(e.target).text().trimStart() === selectedQuestion.answer) {
             alert('you got it right!!')
-            playerOne.score += 1;
+            game.correctAnswer++;
+            playerOne.score++;
+            $('#score').text(`scoreboard: ${playerOne.score}`)
             setUpRound();
+            clearInterval(interval)
         }
     });
 
@@ -401,13 +447,15 @@ function setUpRound() {
             playerOne.score -= 1
         }
         console.log(playerOne.score)
+        $('#score').text(`scoreboard: ${playerOne.score}`)
         answerUl.text('')
         setUpRound()
+        clearInterval(interval)
     });
     game.time = selectedQuestion.type === "multiple choice" ? 30 : selectedQuestion.type === "image" ? 60 : 90;
     if (game.round === 1) {
         const $timer = $('#timer');
-        const interval = setInterval(() => {
+        interval = setInterval(() => {
             if (game.time === 0) {
                 clearInterval(interval);
                 game.round++
@@ -415,20 +463,10 @@ function setUpRound() {
                 game.time--
             }
             $timer.text(game.time)
-                // at certain time of interval fire alert
-                // alert('uh oh! Running out of time!!!');
-                //}, 1000)
+
         }, 1000);
 
-        // for (let i = 0; i < selectedQuestion.answers.length; i++) {
-        //     if (selectedQuestion.answers[i] === selectedQuestion.answer) {
-        //         // right answer
-        //         answerUl.append(`<button id="correct-answer">${selectedQuestion.answers[i]}</button>`)
-        //     } else {
-        //         // 3 wrong answers
-        //         answerUl.append(`<button class="answer">${selectedQuestion.answers[i]}</button>`)
-        //     }
-        // }
+
     };
 }
 $('#start-button').on('click', (e) => {

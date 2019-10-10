@@ -1,1 +1,7 @@
-playerOne {}
+#video-question {
+    visibility: hidden;
+}
+
+.image-question {
+    visibility: hidden;
+}
