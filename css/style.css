@@ -30,7 +30,7 @@ button {
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
-    font-family: Arial;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 21px;
     padding: 20px 39px;
     text-decoration: none;
@@ -44,4 +44,22 @@ button:hover {
 button:active {
     position: relative;
     top: 1px;
+}
+
+.question {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+
+#round {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+
+#timer {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
 }
