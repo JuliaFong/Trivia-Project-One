@@ -387,6 +387,8 @@ let roundQuestions = setQuestions()
 
 function setUpRound() {
     let interval;
+    const img = document.querySelector('.image-question')
+    const vid = document.getElementById('video-question')
     if (roundQuestions.length === 0) {
         game.round++
             roundQuestions = setQuestions()
@@ -397,21 +399,16 @@ function setUpRound() {
     const selectedQuestion = roundQuestions.splice(random, 1)[0]
     questionDiv.text(selectedQuestion.question);
     if (selectedQuestion.type === 'video') {
-        const img = document.querySelector('.image-question')
-        const vid = document.getElementById('video-question')
         img.style.visibility = "hidden"
         vid.style.visibility = 'visible'
         vid.src = selectedQuestion.media
         vid.autoplay = true;
         vid.load();
     } else if (selectedQuestion.type === 'image') {
-        const img = document.querySelector('.image-question')
         img.style.visibility = 'visible'
         img.src = selectedQuestion.media
 
     } else {
-        const img = document.querySelector('.image-question')
-        const vid = document.getElementById('video-question')
         img.style.visibility = "hidden"
         vid.style.visibility = 'hidden'
     }
