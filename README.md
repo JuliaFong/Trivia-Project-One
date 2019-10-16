@@ -1,5 +1,3 @@
-# Trivia-Project-One
-
 # Musical theatre trivia
 How well do you know Musical Theatre? May the best nerd win.
 
