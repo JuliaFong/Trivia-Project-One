@@ -437,6 +437,14 @@ function setUpRound() {
         }
     });
 
+    //username render
+    $('.userName').on('click', (e) => {
+        for($(e.target).text().render() === userName);
+        {
+
+        }
+    });
+
     // click listener for wrong answers
     $('.answer').on('click', (e) => {
         if ($(e.target).text().trimStart() === selectedQuestion.answer) {
@@ -471,4 +479,5 @@ function setUpRound() {
 }
 $('#start-button').on('click', (e) => {
     setUpRound()
+   
 });

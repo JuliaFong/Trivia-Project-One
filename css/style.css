@@ -4,7 +4,17 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-
+.userName {
+   float: right;
+   position: absolute;
+   top: 20px;
+   right: 1px;
+}
+.inputsize {
+    width: 186px;
+    height: 57px;
+    font-size: 25px;
+}
 #score {
     text-decoration-color: white;
 }
