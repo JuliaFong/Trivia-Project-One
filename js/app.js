@@ -435,12 +435,12 @@ function setUpRound() {
     });
 
     //username render
-    $('.userName').on('click', (e) => {
-        for($(e.target).text().render() === userName);
-        {
-
-        }
-    });
+    let tb=document.getElementById('userName');
+    tb.addEventListener('userName', userName, false);
+    function userName(e) {
+           let text=e.target.value;
+    }
+    userName.innerHTML = text;
 
     // click listener for wrong answers
     $('.answer').on('click', (e) => {
